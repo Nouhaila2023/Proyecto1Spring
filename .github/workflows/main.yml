@@ -53,8 +53,8 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           port: 22
           script: >-
-            set -e && 
-            APP_DIR=/home/ubuntu/Proyecto1Spring && 
+            set -e &&
+            APP_DIR=/home/ubuntu/Proyecto1Spring &&
             cd $APP_DIR && 
             
             echo "Actualizar código en servidor..." && 
@@ -67,11 +67,11 @@ jobs:
             podman rm -f springapp || true && 
             
             echo "Levantar contenedor MariaDB..." && 
-            podman stop mariadb_spring && 
+            podman stop mariadb_spring &&
             podman start mariadb_spring && 
             
-            echo "Esperando a arrancar MariaDB..." && 
-            sleep 5 && 
+            echo "Esperando a arrancar MariaDB..." &&
+            sleep 5 &&
             
             echo "Levantar contenedor Spring Boot..." && 
             podman run -p 8080:8080 --network host  --name springapp -d -t springapiejemplo:1.0
