@@ -14,15 +14,9 @@ import java.util.Optional;
 @RestController
 public class TaskController {
 
-
     @Autowired
     private TaskService taskService;
 
-    @DeleteMapping("/tasks")
-    public ResponseEntity<Void> deleteAll(){
-        taskService.deleteAll();
-        return ResponseEntity.noContent().build();
-    }
 
     @GetMapping("/tasks")
     public ResponseEntity<List<Task>> getAllTasks(){
@@ -68,6 +62,12 @@ public class TaskController {
             //Si el id no es de una tarea válida
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @DeleteMapping("/tasks")
+    public ResponseEntity<Void> deleteAll(){
+        taskService.deleteAll();
+        return ResponseEntity.noContent().build();
     }
 
 }

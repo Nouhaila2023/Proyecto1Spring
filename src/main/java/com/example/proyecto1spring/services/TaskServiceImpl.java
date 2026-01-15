@@ -11,7 +11,6 @@ import java.util.Optional;
 
 @Service
 public class TaskServiceImpl implements TaskService {
-
     @Autowired
     private TaskRepository taskRepository;
 
@@ -21,8 +20,12 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public List<Task> findAllByOrderByTitleAsc(String orden) {
-        return List.of();
+    public List<Task> findAllOrderByTitle(String order) {
+        if (order.equals("asc")) {
+            return taskRepository.findAllByOrderByTitleAsc();
+        } else {
+            return taskRepository.findAllByOrderByTitleDesc();
+        }
     }
 
     @Override
@@ -48,14 +51,5 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public void deleteAll() {
         taskRepository.deleteAll();
-    }
-
-    @Override
-    public @Nullable List<Task> findAllOrderByTitle(String order) {
-        if (order.equals("asc")) {
-            return taskRepository.findAllByOrderByTitleAsc();
-        } else {
-            return taskRepository.findAllByOrderByTitleDesc();
-        }
     }
 }
