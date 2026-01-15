@@ -8,25 +8,21 @@ import java.time.LocalDate;
 @Entity(name = "tasks")
 @AllArgsConstructor
 @NoArgsConstructor
-@Setter
 @Getter
+@Setter
 @ToString
-
-
 public class Task {
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY) //Autoin
-        private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //Autoincrement
+    private Long id;
 
-        //me falta algo en la linia 24
-        @Column(nullable = false)
-        private String title;
+    @Column(nullable = false, unique = true)
+    private String title;
 
-        private String description;
+    private String description;
 
-        @Column(nullable = false, name = "fins_Date")
-        private LocalDate finisDate;
-
+    @Column(name = "finish_date", nullable = false)
+    private LocalDate finishDate;
 
 }

@@ -9,12 +9,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class TaskServicesImpl implements TaskService {
+public class TaskServiceImpl implements TaskService {
 
     @Autowired
     private TaskRepository taskRepository;
-
-
 
     @Override
     public List<Task> findAll() {
@@ -28,15 +26,13 @@ public class TaskServicesImpl implements TaskService {
 
     @Override
     public Optional<Task> findByTitle(String title) {
-        return Optional.empty();
+        return taskRepository.findByTitle(title);
     }
-
 
     @Override
     public Task saveTask(Task task) {
         return taskRepository.save(task);
     }
-
 
     @Override
     public void deleteTask(Long id) {
