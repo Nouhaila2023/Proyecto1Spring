@@ -11,5 +11,4 @@ public class Proyecto1SpringApplication {
     }
 
 
-
 }
