@@ -1,6 +1,7 @@
 package com.example.proyecto1spring.services;
 
 import com.example.proyecto1spring.entities.Task;
+import org.jspecify.annotations.Nullable;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,6 +9,8 @@ import java.util.Optional;
 public interface TaskService {
 
     List<Task> findAll();
+    List<Task> findAllByOrderByTitleAsc(String orden);
+
     Optional<Task> findById(Long id);
     Optional<Task> findByTitle(String title);
 
@@ -16,4 +19,5 @@ public interface TaskService {
     void deleteTask(Long id);
     void deleteAll();
 
+    @Nullable List<Task> findAllOrderByTitle(String order);
 }
